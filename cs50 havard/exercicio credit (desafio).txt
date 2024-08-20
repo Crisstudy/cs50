@@ -1,0 +1,191 @@
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void){
+
+    long input = get_long ("Número do cartão ");
+
+   int i = 0;
+   int j = 0;
+   long credit = input;
+   int first_check = 0;
+   int second_check = 0;
+
+    do{
+    first_check = credit % 100 / 10 * 2;
+    if (first_check > 9){
+        int first_number = first_check / 10;
+        int second_number = first_check % 10;
+        first_check = first_number + second_number;
+    }
+    i += first_check;
+    credit = credit / 100;
+    }
+    while (credit > 0);
+
+    credit = input;
+    do{
+        second_check = credit % 10;
+        j += second_check;
+        credit = credit / 100;
+    }
+    while(credit > 0);
+
+    int checksum = i + j;
+    int valid = checksum % 10;
+    int digits = 0;
+
+    if (valid == 0){
+        long n = input;
+        do{
+            n = n / 10;
+            digits++;
+        }
+        while (n > 0);
+
+        if (digits > 16 || digits < 13){
+            printf("INVALID\n");
+        }
+
+        long m = input;
+
+        do{
+            m = m / 10;
+        }
+        while (m > 51 && m > 52 && m > 53 && m > 54 && m > 55);
+
+        if(m == 51 || m == 52 || m == 53 || m == 54 || m == 55){
+            printf("MASTERCARD\n");
+        }
+        else if (m < 51 || m > 55){
+            printf("INVALID\n");
+        }
+
+        long a = input;
+        do{
+            a = a / 10;
+        }
+        while (a > 34 && a > 37);
+
+        if (a == 34 || a == 37){
+            printf("AMEX\n");
+        }
+        else if (a < 34 || a > 37){
+            printf("INVALID\n");
+        }
+
+        long v = input;
+        do{
+            v = v / 10;
+        }
+        while(v > 4);
+
+        if (v == 4){
+            printf("VISA\n");
+        }
+    }
+    else{
+        printf("INVALID\n");
+    }
+
+}
+
+--------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void){
+
+    long input = get_long ("Número do cartão ");
+
+   int i = 0;
+   int j = 0;
+   long credit = input;
+   int first_check = 0;
+   int second_check = 0;
+
+    do{
+    first_check = credit % 100 / 10 * 2;
+    if (first_check > 9){
+        int first_number = first_check / 10;
+        int second_number = first_check % 10;
+        first_check = first_number + second_number;
+    }
+	 i += first_check;
+    credit = credit / 100;
+    }
+    while (credit > 0);
+
+    credit = input;
+    do{
+        second_check = credit % 10;
+        j += second_check;
+        credit = credit / 100;
+    }
+    while(credit > 0);
+	credit = input;
+    do{
+        second_check = credit % 10;
+        j += second_check;
+        credit = credit / 100;
+    }
+    while(credit > 0);
+
+    int checksum = i + j;
+    int valid = checksum % 10;
+    int digits = 0;
+
+    if (valid == 0){
+        long n = input;
+        do{
+            n = n / 10;
+            digits++;
+        }
+        while (n > 0);
+	
+	 if (digits > 16  digits < 13){
+            printf("INVALID\n");
+        }
+
+        long m = input;
+
+        do{
+            m = m / 10;
+        }
+        while (m > 51 && m > 52 && m > 53 && m > 54 && m > 55);
+
+        if(m == 51  m == 52  m == 53  m == 54  m == 55){
+            printf("MASTERCARD\n");
+        }
+        else if (m < 51  m > 55){
+            printf("INVALID\n");
+        }
+
+		 long a = input;
+        do{
+            a = a / 10;
+        }
+        while (a > 34 && a > 37);
+
+        if (a == 34  a == 37){
+            printf("AMEX\n");
+        }
+        else if (a < 34  a > 37){
+            printf("INVALID\n");
+        }
+
+        long v = input;
+        do{
+            v = v / 10;
+        }
+        while(v > 4);
+
+        if (v == 4){
+            printf("VISA\n");
+        }
+    }
+    else{
+        printf("INVALID\n");
+    }
+
+}

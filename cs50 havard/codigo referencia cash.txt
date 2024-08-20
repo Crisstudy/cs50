@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+int main(void)
+   {
+
+      int coins25=0;
+      int coins10=0;
+      int coins5=0;
+      int coins1=0;
+
+      float n;
+
+      do
+      {
+         n = get_float("valor do troco: ");
+      }
+
+      while(n < 0);
+
+      int cents = round(n * 100);
+
+         coins25=cents / 25;
+         coins10=(cents - (coins25 * 25))/ 10;
+         coins5=(cents - (coins25 * 25) - (coins10 * 10))/ 5;
+         coins1=(cents - (coins25 * 25) - (coins10 * 10) - (coins5 * 5));
+
+         printf("%i\n", coins25 + coins10 + coins5 + coins1);
+
+
+   }
